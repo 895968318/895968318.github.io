@@ -172,14 +172,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="JavaWeb"><a href="#JavaWeb" class="headerlink" title="JavaWeb"></a>JavaWeb</h1><h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><hr>
+        <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><hr>
 <p><strong>问题:  更新了css资源网页不能展示相对于的格式</strong></p>
 <p><strong>可能的解决方法：清除网页的缓存</strong></p>
 <hr>
 <p><strong>问题：ajax不能正确的执行回调函数</strong></p>
 <p><strong>可能的解决方法：检查对应的按钮是否是在表单里并且使用了type=”submit”</strong></p>
-<h2 id="可学习的方法"><a href="#可学习的方法" class="headerlink" title="可学习的方法"></a>可学习的方法</h2><p><strong>xxx.properties配置文件可以放在一个叫resource的目录中，把这个目录标志为resources根这样就可以使用 xxx.class.getClassLoader().getResourceAsStream(“xxx”)获得相对于的配置文件的字节输入流 在使用Properties类的load()方法就可以加载相对于的配置信息了</strong></p>
-
+        
       
 
       
@@ -240,110 +239,7 @@
 <p>​    data:请求参数</p>
 <p>​    callback:回调函数</p>
 <pre><code>type:响应结果的类型</code></pre><p>​    <img src="C:%5CUsers%5C%E4%B8%87%E6%AD%A3%E6%97%BA%5CDesktop%5CJava%5C%E7%AC%94%E8%AE%B0%5Cimgs%5CQQ%E6%88%AA%E5%9B%BE20200112204000.png" alt=""></p>
-<p><strong>$.post()</strong></p>
-<p>​    和$.get()方法类似</p>
-<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>1.基本规则：</p>
-<p>​    数据在名称/值队中：json数据是由键值对构成的</p>
-<p>​        *建用引号(单双都行)引起来，也可以不用引号</p>
-<p>​        <strong>*值的类型：数字，字符串（在双引号中），逻辑值（true或false），</strong></p>
-<p>​        <strong>数组{“person” : [{},{}]},</strong></p>
-<p>​        <strong>对象{“address”:{“provice”:”陕西”…}}</strong></p>
-<p>​    数据由逗号隔开：多个键值对由逗号分隔</p>
-<p>​    <strong>花括号保存对象：使用{}定义json格式</strong></p>
-<p>​    <strong>方括号保存数组：[]</strong></p>
-<ol start="2">
-<li><p>获取数据</p>
-<p>1.json对象.键名</p>
-<p>2.json对象[“键名”]  (伪数组形式)</p>
-<p>3.数组对象[索引]</p>
-</li>
-<li><p>遍历</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;<span class="string">"name"</span> : <span class="string">"张三"</span>, <span class="string">"age"</span> :<span class="number">23</span>, <span class="string">"gender"</span>:<span class="literal">true</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="keyword">in</span>循环</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> person)&#123;</span><br><span class="line">	<span class="comment">//key为键的字符串</span></span><br><span class="line">	alert(key+<span class="string">": "</span>+person[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-</li>
-</ol>
-<h2 id="Jackson"><a href="#Jackson" class="headerlink" title="Jackson"></a>Jackson</h2><p>*JSON解析器</p>
-<p>​    jackson</p>
-<h3 id="JSON转Java对象"><a href="#JSON转Java对象" class="headerlink" title="JSON转Java对象"></a>JSON转Java对象</h3><p>​    1.导入jackson相关jar包</p>
-<p>​    2.创建jackson核心对象ObjectMapper</p>
-<p>​    3.调用ObjectMapper的相关方法进行转换</p>
-<p>​            readValue(String,class)</p>
-<h3 id="Java对象转JSON"><a href="#Java对象转JSON" class="headerlink" title="Java对象转JSON"></a>Java对象转JSON</h3><p>​    1使用步骤</p>
-<p>​            1.导入jackson相关jar包</p>
-<p>​            2.创建jackson核心对象ObjectMapper</p>
-<p>​            3.调用ObjectMapper的相关方法进行转换</p>
-<p>​                <strong>1.方法</strong></p>
-<p>​                    writeValue(参数1，obj)</p>
-<p>​                                        参数1：<br>​                                                    file：将obj对象转换为json字符串，并保存到指定文件中</p>
-<p>​                                                    writer：将obj对象转换为json字符串，并保存到字符输出流中</p>
-<p>​                                                    outputStream：将obj对象转换为json字符串，并保存到字节输出流中</p>
-<p>​                    writeValueAsString(obj) 将对象转为json字符串</p>
-<p>​                2.相关注解</p>
-<p>​                        @JsonIgnore:忽略属性</p>
-<p>​                        @JsonFormat:属性格式化            </p>
-<p>​                3.复杂java对象转换</p>
-<p>​                    1.List:数组</p>
-<p>​                    2.Map:对象格式一致(键值对)</p>
-<h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><pre><code>1.redis的数据结构</code></pre><p>​            *redis存储的是：key，value格式的数据，其中key都是字符串，value有5种不同的数据结构</p>
-<p>​                字符串：string</p>
-<p>​                哈希类型 hash：map格式</p>
-<p>​                列表类型：linkedlist格式</p>
-<p>​                集合类型：set</p>
-<p>​                有序集合类型  sortedset</p>
-<p><img src="C:%5CUsers%5C%E4%B8%87%E6%AD%A3%E6%97%BA%5CDesktop%5CJava%5C%E7%AC%94%E8%AE%B0%5Cimgs%5CQQ%E6%88%AA%E5%9B%BE20200114203805.png" alt=""></p>
-<p>​                <strong>字符串类型：</strong></p>
-<p>​                    1.存储：set key value</p>
-<p>​                    2.获取：get key</p>
-<p>​                    3.删除：del key</p>
-<p>​                <strong>哈希类型</strong></p>
-<p>​                    1.存储：hset key field value</p>
-<p>​                    2.获取：hget key field （获取全部：hgetall key 获取所有的field和value）</p>
-<p>​                    3.删除：hdel key field </p>
-<p>​                <strong>列表类型list：</strong></p>
-<p>​                    1.存储：</p>
-<p>​                        1.lpush key value ： 将元素加入列表的左边</p>
-<p>​                        2.rpush key value ： 将元素加入列表的右边</p>
-<p>​                    2.获取：</p>
-<p>​                        lrange key start end ： 范围获取</p>
-<p>​                    3 删除：</p>
-<p>​                        lpop key： 删除列表最左边的元素，并返回</p>
-<p>​                        rpop key： 删除列表最右左边的元素，并返回</p>
-<p>​                <strong>集合类型set</strong></p>
-<p>​                    1.存储：sadd key value</p>
-<p>​                    2.获取：smembers key：获取set集合所有元素</p>
-<p>​                    3.删除：srem key value ：删除set集合中的某个元素</p>
-<p>​                <strong>有序集合</strong></p>
-<p>​                    1.存储：zadd key score value ：</p>
-<p>​                    2.获取：zrange key start end</p>
-<p>​                    3.删除：zrem key value            </p>
-<p>​                <strong>通用命令</strong></p>
-<p>​                    1.keys *： 查询所有的键</p>
-<p>​                    2.type key：获取键对应的value的类型</p>
-<p>​                    3.del key：删除指定的key value</p>
-<p>​            <strong>持久化</strong></p>
-<p>​                redis持久化机制:</p>
-<p>​                    1.RDB:默认方式，不需要进行配置，默认使用这种方式</p>
-<p>​                        在一定的间隔时间中，检测key的变化变化情况，然后持久化数据</p>
-<p>​                            1.编辑redis.windows.conf文件</p>
-<p>​                            2.重新启动redis服务器，并指定配置文件名</p>
-<p>​                                    <img src="C:%5CUsers%5C%E4%B8%87%E6%AD%A3%E6%97%BA%5CDesktop%5CJava%5C%E7%AC%94%E8%AE%B0%5Cimgs%5CQQ%E6%88%AA%E5%9B%BE20200114212435.png" alt=""></p>
-<p>​                    2.AOF：日志记录的方式，可以记录每一条命令的操作。可以每一次命令操作后，持久化数据</p>
-<p>​                            编辑redis.windows.conf文件</p>
-<p>​                            appendonly no（关闭AOF）–&gt;    appendonly yes (开启AOF)</p>
-<h3 id="jedis的使用"><a href="#jedis的使用" class="headerlink" title="jedis的使用"></a>jedis的使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取连接</span></span><br><span class="line">      Jedis jedis  = <span class="keyword">new</span> Jedis( <span class="string">"localhost"</span>,<span class="number">6379</span> );</span><br><span class="line">      <span class="comment">//操作</span></span><br><span class="line">      jedis.set(<span class="string">"username"</span>,<span class="string">"zhangsan"</span>);</span><br><span class="line">      <span class="comment">//关闭连接</span></span><br><span class="line">      jedis.close();</span><br></pre></td></tr></table></figure>
-
-<p>​                <strong>jedis操作各种数据结构</strong></p>
-<p>​                        jedis的方法和redis的命令相同</p>
-<p>​                            setex</p>
-<h3 id="jedis连接池："><a href="#jedis连接池：" class="headerlink" title="jedis连接池："></a>jedis连接池：</h3><p>​                        (创建配置对象JedisPoolConfig)</p>
-<p>​                        1.创建jedis连接池对象JedisPool</p>
-<p>​                        2.获取连接( JedisPool.getResource() )</p>
-<p>​                        3.使用</p>
-<p>​                        4.关闭，归还到连接池中</p>
-
+        
       
 
       
